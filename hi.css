@@ -1,0 +1,238 @@
+/* 1. Root dan Reset Awal */
+:root {
+  --bg: #f9f9f9;
+  --text: #333;
+  --accent: #f38a21;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* ini na biar gak bolong */
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  transition: background 0.3s, color 0.3s;
+}
+
+h1, h2, h3 {
+  font-family: 'Press Start 2P', cursive;
+}
+
+/* 2. Header & Navigasi */
+header {
+  background: var(--accent);
+  color: white;
+  padding: 20px 10%; /* ini na biar gak bolong */
+  display: flex; /* biar tataannya fleksibel */
+  justify-content: space-between; /* ini yang merapikan*/
+  align-items: center; /* biar headernya rapi */
+  position: sticky; /* ini biar ngestuck */
+  top: 0;
+  z-index: 999;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 15px;
+  font-family: 'Poppins', sans-serif;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: #222; /* ini biar ngubah warna pas mau mencet navbar*/
+}
+
+/* 3. Section (Konten) */
+section {
+  padding: 60px 10%;
+  background: white;
+  border-bottom: 1px solid #eee; /* ini biar ada pembatas */
+}
+
+section:nth-child(even) { /* ini biar kesetel setiap yang ganjil warna nya beda sama background*/
+  background: #f7f7f7;
+}
+
+/* 4. Hero Section */
+.hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 10%;
+}
+
+.hero img {
+  max-width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* 5. Gaya Judul dan Teks */
+h2 {
+  color: var(--accent);
+  margin-bottom: 20px;
+  font-size: 2rem;
+  border-left: 5px solid var(--accent);
+  padding-left: 15px;
+}
+
+.aku-teks h3 {
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+
+/* 6. Section Aku */
+.aku {
+  background: #f4f4f4;
+}
+
+.oke {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: center;
+}
+
+.oke img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* 7. Footer */
+footer {
+  background: #222;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+/* 8. Dark Mode */
+body.dark {
+  --bg: #0d0b1f;      
+  --text: #e0d3ff;
+  --accent: #3b1f65; 
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+body.dark header {
+  background: linear-gradient(to right, #2e1456, #1a1a40);
+  box-shadow: 0 0 12px rgba(203, 128, 255, 0.4);
+}
+
+body.dark nav a {
+  color: #e0d3ff;
+}
+
+body.dark footer {
+  background: #1a1a2e;
+  color: #d3bfff;
+}
+
+body.dark h1,
+body.dark h2,
+body.dark h3 {
+  color: #dca5ff;
+}
+
+body.dark .hero img {
+  height: 350px;
+  max-width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  filter: brightness(1.1) contrast(1.1);
+}
+
+body.dark section {
+  background: #1d1533;
+  border-bottom: 1px solid #3c2c57;
+  box-shadow: inset 0 0 0 2px #4b3776;
+}
+
+body.dark section:nth-child(even) {
+  background: #241a3b;
+}
+
+body.dark .aku {
+  background: #1c1235;
+}
+
+/* 9. Animasi Fade-in*/
+.fade-in {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.6s ease-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 10. Mobile Navigation */
+/* hamburger/garis 3 dipinggir */
+.menu-toggle {
+  display: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: white;
+}
+
+.dark-toggle {
+  margin-left: 15px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  nav {
+    display: none;
+    flex-direction: column;
+    background: var(--accent);
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+  }
+
+  nav.show {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  header {
+    flex-wrap: wrap;
+  }
+
+  .oke {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero img {
+    width: 100%;
+  }
+}
